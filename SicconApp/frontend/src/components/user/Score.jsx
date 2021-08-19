@@ -18,9 +18,13 @@ const initialState = {
 export default class Score extends Component {
     state = { ...initialState }
 
+    clear() {
+        this.setState({rate: initialState.rate})
+        this.setState({scoreData: initialState.scoreData})
+    }
+
     getScore() {
         api.get(`/score?cpf=${this.state.cpf}`).then(resp => {
-            console.log(resp.data)
             this.setState({rate: resp.data.data.rate})
             this.setState({scoreData: resp.data.data.data})
             this.renderScore()
@@ -28,7 +32,23 @@ export default class Score extends Component {
             this.renderGoodsTable()
             this.renderLastCreditQuery()
             this.renderLastCreditCardPurchase()
+        }).catch(error => {
+            this.clear()
+            if (error.response && error.response.status === 404) {
+                this.setState({error: "CPF não encontrado!"})
+            } else {
+                this.setState({error: "Erro no servidor!"})
+            }
         })
+    }
+
+    renderError() {
+        if (!this.state.error || this.state.error === "")
+            return
+
+        return (
+            <p style={{color:'red'}}color="red"><b>{this.state.error}</b></p>
+        )
     }
 
     updateField(event) {
@@ -36,7 +56,7 @@ export default class Score extends Component {
         this.setState({cpf})
     }
 
-    renderNothing() {
+    renderForm() {
         return (
             <div className="form">
                 <div className="row">
@@ -226,7 +246,8 @@ export default class Score extends Component {
     render() {
         return (
             <Main {...headerProps}>
-                {this.renderNothing()}
+                {this.renderForm()}
+                {this.renderError()}
                 {this.renderScore()}
                 {this.renderIncomesTable()}
                 {this.renderGoodsTable()}

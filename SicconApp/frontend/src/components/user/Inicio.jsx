@@ -12,23 +12,31 @@ const initialState = {
     cpf: "",
     registryData: {},
     registryDebts: [],
-    scoreData: {}
+    error: ""
 }
 
 export default class Registry extends Component {
     state = { ...initialState }
 
     clear() {
-        this.setState({vaga: initialState.vaga})
+        this.setState({registryData: initialState.registryData})
+        this.setState({registryDebts: initialState.registryDebts})
     }
 
     getRegistry() {
         api.get(`/registryinfo?cpf=${this.state.cpf}`).then(resp => {
-            console.log(resp.data.data.debts)
+            this.setState({error: ""})
             this.setState({registryData: resp.data.data})
             this.setState({registryDebts: resp.data.data.debts})
             this.renderRegistry()
             this.renderRegistryDebtsTable()
+        }).catch(error => {
+            this.clear()
+            if (error.response && error.response.status === 404) {
+                this.setState({error: "CPF não encontrado!"})
+            } else {
+                this.setState({error: "Erro no servidor!"})
+            }
         })
     }
 
@@ -37,7 +45,16 @@ export default class Registry extends Component {
         this.setState({cpf})
     }
 
-    renderNothing() {
+    renderError() {
+        if (!this.state.error || this.state.error === "")
+            return
+
+        return (
+            <p style={{color:'red'}}color="red"><b>{this.state.error}</b></p>
+        )
+    }
+
+    renderForm() {
         return (
             <div className="form">
                 <div className="row">
@@ -127,7 +144,8 @@ export default class Registry extends Component {
     render() {
         return (
             <Main {...headerProps}>
-                {this.renderNothing()}
+                {this.renderForm()}
+                {this.renderError()}
                 {this.renderRegistry()}
                 {this.renderRegistryDebtsTable()}
             </Main>

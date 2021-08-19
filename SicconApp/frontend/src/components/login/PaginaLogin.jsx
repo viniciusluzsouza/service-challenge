@@ -7,7 +7,7 @@ import logo from '../../assets/imgs/logo.png'
 const initialState = {
     email: '',
     password: '',
-    erro: null
+    error: null
 }
 
 export default class PaginaLogin extends Component {
@@ -18,37 +18,19 @@ export default class PaginaLogin extends Component {
         e.preventDefault();
         const { email, password } = this.state;
         if (!email || !password) {
-            this.setState({ erro: "Informe e-mail e senha para efetuar o login" });
+            this.setState({ error: "Informe e-mail e senha para efetuar o login" });
         } else {
           try {
             const response = await api.post("/signin", { email, password });
             login(response.data.token);
-            console.log(response.data)
             this.props.history.push("/home");
-            // if (response.data.tipo === 1)
-            //     this.props.history.push("/HomeAdmin");
-            // else
-            //     this.setState({
-            //         erro: "Login não pôde ser realizado. Apenas administradores tem acesso ao sistema de gerenciamento."
-            //     });
           } catch (err) {
             this.setState({
-              erro: "Login não pôde ser realizado. Verifique suas credenciais."
+              error: "Login não pôde ser realizado. Verifique suas credenciais."
             });
           }
         }
       };
-
-    // makeLogin() {
-    //     this.props.history.push('/HomeAdmin')
-    //     // return <Redirect to='/HomeAdmin' />
-    // }
-
-    // updateField(event) {
-    //     const state = { ...this.state }
-    //     state[event.target.name] = event.target.value
-    //     this.setState({state})
-    // }
 
     renderLogin() {
         return (
@@ -70,7 +52,7 @@ export default class PaginaLogin extends Component {
                                 required />
                             <button className="btn btn-lg btn-primary btn-block" type="submit"
                                 onClick={e => this.makeLogin(e)}>Entrar</button>
-                            {this.renderErro()}
+                            {this.renderError()}
                             <p className="mt-5 mb-3 text-muted">&copy; 2019</p>
                         </div>
                     </div>
@@ -87,11 +69,11 @@ export default class PaginaLogin extends Component {
         }
     }
 
-    renderErro() {
-        if (this.state.erro) {
+    renderError() {
+        if (this.state.error) {
             return (
                 <div>
-                    <p className="mt-5 mb-3 text-danger">{this.state.erro}</p>
+                    <p className="mt-5 mb-3 text-danger">{this.state.error}</p>
                 </div>
             )
         }
