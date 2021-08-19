@@ -1,0 +1,67 @@
+version: '3'
+
+services:
+    register-manager:
+        build: ./RegisterManager
+        volumes:
+            - ./RegisterManager:/app
+        ports:
+            - "5005:5005"
+        container_name: register-manager
+        networks:
+            - siccon
+
+    credit-score:
+        build: ./CreditScore
+        volumes:
+            - ./CreditScore:/app
+        ports:
+            - "5001:5001"
+        container_name: credit-score
+        networks:
+            - siccon
+
+    credit-trace:
+        build: ./CreditTrace
+        volumes:
+            - ./CreditTrace:/app
+        ports:
+            - "5002:5002"
+        container_name: credit-trace
+        networks:
+            - siccon
+
+    score-calculator:
+        build: ./ScoreCalculator
+        volumes:
+            - ./ScoreCalculator:/app
+        ports:
+            - "5003:5003"
+        container_name: score-calculator
+        networks:
+            - siccon
+
+    siccon-backend:
+        build: ./SicconApp/backend
+        volumes:
+            - ./SicconApp/backend:/app
+        ports:
+            - "5010:5010"
+        container_name: siccon-backend
+        networks:
+            - siccon
+
+    siccon-frontend:
+        build: ./SicconApp/frontend
+        volumes:
+            - ./SicconApp/frontend:/app
+            - /app/node_modules
+        ports:
+            - "5000:5000"
+        container_name: siccon-frontend
+        networks:
+            - siccon
+
+
+networks:
+    siccon:

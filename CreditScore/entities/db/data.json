@@ -1,0 +1,134 @@
+[
+  {
+    "cpf": "12312312312",
+    "age": 25,
+    "address": "Rua do Joao, 150, Sao Paulo/SP",
+    "incomes": [
+      {
+        "type": "CLT",
+        "value": 5000,
+        "since": "2015-08-14"
+      }
+    ],
+    "goods": [
+      {
+        "type": "CASA",
+        "value": 300000
+      },
+      {
+        "type": "CARRO",
+        "value": 40000
+      }
+    ]
+  },
+  {
+    "cpf": "32132132132",
+    "age": 32,
+    "address": "Rua do Joao, 150, Sao Paulo/SP",
+    "incomes": [
+      {
+        "type": "CLT",
+        "value": 6000,
+        "since": "2017-05-21"
+      },
+      {
+        "type": "ALUGUEL",
+        "value": 1000,
+        "since": "2013-02-04"
+      }
+    ],
+    "goods": [
+      {
+        "type": "CASA",
+        "value": 200000
+      },
+      {
+        "type": "APARTAMENTO",
+        "value": 200000
+      },
+      {
+        "type": "CARRO",
+        "value": 30000
+      }
+    ]
+  },
+  {
+    "cpf": "45645645645",
+    "age": 39,
+    "address": "Rua do Joao, 150, Sao Paulo/SP",
+    "incomes": [
+      {
+        "type": "PJ",
+        "value": 9000,
+        "since": "2019-12-18"
+      }
+    ],
+    "goods": [
+      {
+        "type": "APARTAMENTO",
+        "value": 500000
+      },
+      {
+        "type": "CARRO",
+        "value": 80000
+      }
+    ]
+  },
+  {
+    "cpf": "65465465465",
+    "age": 44,
+    "address": "Rua do Joao, 150, Sao Paulo/SP",
+    "incomes": [
+      {
+        "type": "ALUGUEL",
+        "value": 40000,
+        "since": "2008-03-27"
+      },
+      {
+        "type": "ALUGUEL",
+        "value": 16000,
+        "since": "2012-09-13"
+      }
+    ],
+    "goods": [
+      {
+        "type": "CASA",
+        "value": 1000000
+      },
+      {
+        "type": "COMERCIO",
+        "value": 2000000
+      },
+      {
+        "type": "COMERCIO",
+        "value": 600000
+      },
+      {
+        "type": "CARRO",
+        "value": 200000
+      }
+    ]
+  },
+  {
+    "cpf": "78978978978",
+    "age": 35,
+    "address": "Rua do Joao, 150, Sao Paulo/SP",
+    "incomes": [
+      {
+        "type": "PJ",
+        "value": 12000,
+        "since": "2017-04-06"
+      }
+    ],
+    "goods": [
+      {
+        "type": "CASA",
+        "value": 700000
+      },
+      {
+        "type": "CARRO",
+        "value": 100000
+      }
+    ]
+  }
+]
