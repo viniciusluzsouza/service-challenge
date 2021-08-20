@@ -1,6 +1,9 @@
 FROM node:13.12.0-alpine
+RUN mkdir /app
 WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
 COPY package*.json ./
 RUN npm install --silent
 COPY . .
-CMD ["node", "index.js"]
+#TODO: deploy correctly
+CMD ["npm", "start"]
