@@ -182,7 +182,7 @@ export default class Score extends Component {
         return (
             <div class='mydiv'>
                 <hr />
-                <h3>Informações de Bens</h3>
+                <h3>Informações de Movimentação Financeira</h3>
                 <table className="table mt-4">
                     <thead>
                         <tr>

@@ -53,7 +53,7 @@ export default class PaginaLogin extends Component {
                             <button className="btn btn-lg btn-primary btn-block" type="submit"
                                 onClick={e => this.makeLogin(e)}>Entrar</button>
                             {this.renderError()}
-                            <p className="mt-5 mb-3 text-muted">&copy; 2019</p>
+                            <p className="mt-5 mb-3 text-muted">&copy; 2021</p>
                         </div>
                     </div>
                 </div>
